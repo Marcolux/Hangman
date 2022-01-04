@@ -83,9 +83,16 @@ body{
     align-content: space-between;
 }
 
+#gameChuck{
+   
+    /* display: flex;
+   
+    align-items: center; */
+}
+
 #game{
     display: none;
-    background: url('css/img/maxres2.jpeg');
+
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -225,7 +232,7 @@ body{
     
     position: absolute;
     left: 0vh;
-    top: 22.3vh;
+    top: 25.3vh;
     width: 7vh;
     height: 7vh;
     background: cornsilk;
@@ -233,19 +240,19 @@ body{
 
 #bodyPic{
     position: absolute;
-    top:29vh;
+    top:32vh;
     
     
     
-    width: 9vh;
+    width: 10vh;
     height: 15vh;
     background: cornsilk;
 }
 
 #rightArmPic{
     position: absolute;
-    top:29vh;
-    width: 9vh;
+    top:32vh;
+    width: 7.5vh;
     height: 6vh;
 }
 
@@ -253,7 +260,7 @@ body{
 #leftArmPic{
     
     position: absolute;
-    top:29.3vh;
+    top:32.3vh;
     width: 8vh;
     height: 6vh;
 }
@@ -261,7 +268,7 @@ body{
 #leftLegPic{
         
         position: absolute;
-        top:44vh;
+        top:47vh;
         width: 5.7vh;
         height: 14vh;
 }
@@ -269,7 +276,7 @@ body{
 #RightLegPic{
             
             position: absolute;
-            top:44vh;
+            top:47vh;
             width: 10vh;
             height: 14vh;}
             
@@ -277,17 +284,19 @@ body{
        
         align-items: center;
         text-align: center;
-        min-width: 20vh;
+        min-width: 90vw;
+        overflow: scroll;
+        scroll-behavior: smooth;
+        scrollbar-width: 0;
         font-size: 20px;
         padding-left: 1vh;
         padding-right: 1vh;
-        display: flex;
+        display: none;
         background: rgba(255, 255, 255, 0.742);
-        position: fixed;
         margin-left: 1.5vh;
         margin-right: 1.5vh;
-        bottom: 29.2vh;
-        height: 8vh;
+        /* bottom: 29.2vh; */
+        height: 9vh;
         border-radius: 1vh;
         border: 1px solid black;
 }

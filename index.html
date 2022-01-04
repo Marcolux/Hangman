@@ -11,86 +11,92 @@
 </head>
 <body id="bodyB">
     <div id="gameIntroToo">
-    <div id="gameIntro">
-        <input id="player" type="text" placeholder="mr. Hangman"></input>
-        <div id="selections">
-        <select name="lvl" id="difficulty">
-             <option id="four" value="four">Max 4 letters</option>
-             <option id="seven" value="seven">Max 7 letters</option>
-             <option id="ten" value="ten">Max 10 Letters</option>  
-        </select>
-        <select name="subjecT" id="selSub">  
-            <option value=""></option>
-            <option name="Sport" value="Sport,kind of sport,football player, basketball player, baseball player, soccer player">Sports</option>
-            <option label="Music" value="Music, song, music instrument, music genre, singer">Music</option>
-            <option id="History" value="History, historic event, ancient population">History</option>
-            <option title="Science" value="Science,chemistry,biology,math,phisic">Science</option>
-            <option title="Movie" value="Movie,movie title,actor,actress,movie genre">Movies</option>
-            <option title="Animal" value="Animals,animal-race,mamals,reptils,fish,bird">Animals</option>
-            <option title="Geography" value="Geography,city name,savana,jungle,desert,europe">Geography</option>
-            <option title="Halloween" value="Halloween,halloween costume,halloween-character,halloween-movie,horror-movie,serial-killer">Halloween</option>
-        </select>
-        <button id="start">Start</button>
+        <div id="gameIntro">
+            <input id="player" type="text" placeholder="mr. Hangman"></input>
+            <div id="selections">
+                <select name="lvl" id="difficulty">
+                    <option id="four" value="four">Max 4 letters</option>
+                    <option id="seven" value="seven">Max 7 letters</option>
+                    <option id="ten" value="ten">Max 10 Letters</option>  
+                </select>
+                <select name="subjecT" id="selSub">  
+                    <option value=""></option>
+                    <option name="Sport" value="Sport,kind of sport,football player, basketball player, baseball player, soccer player">Sports</option>
+                    <option label="Music" value="Music, song, music instrument, music genre, singer">Music</option>
+                    <option id="History" value="History, historic event, ancient population">History</option>
+                    <option title="Science" value="Science,chemistry,biology,math,phisic">Science</option>
+                    <option title="Movie" value="Movie,movie title,actor,actress,movie genre">Movies</option>
+                    <option title="Animal" value="Animals,animal-race,mamals,reptils,fish,bird">Animals</option>
+                    <option title="Geography" value="Geography,city name,savana,jungle,desert,europe">Geography</option>
+                    <option title="Halloween" value="Halloween,halloween costume,halloween-character,halloween-movie,horror-movie,serial-killer">Halloween</option>
+                </select>
+                <button id="start">Start</button>
+            </div>
         </div>
+        <div id="GameRules">
+            <h1>The Hangman Chuck</h1>
+            <ul id="rules">
+                <li>Enter your Name</li>
+                <li>Select the difficulty based on the length of the word</li>
+                <li>Pick a category and press enter</li>
+                <li>Try to guess the word before Chuck Norris full body is complete</li> 
+            </ul>
+        </div> 
     </div>
-    <div id="GameRules">
-        <h1>The Hangman Chuck</h1>
-        <ul id="rules">
-            <li>Enter your Name</li>
-            <li>Select the difficulty based on the length of the word</li>
-            <li>Pick a category and press enter</li>
-            <li>Try to guess the word before Chuck Norris full body is complete</li> 
-        </ul>
-    </div> 
-</div>
-    <div id="game">
-        <div id="mrHangMan">
-            <h1 id="hangmanPlayer"></h1>
-            <div id="myCanvas" >
-                <img src="css/img/chuckHead.png" alt="head" class="bodyParts" id="headPic">
-                <img src="css/img/chuckBody.png" alt="bodyPic" class="bodyParts" id="bodyPic">
-                <img src="css/img/chuckRightArm.png" alt="leftArm" class="bodyParts" id="rightArmPic">
-                <img src="css/img/chuckLeftAr.png" alt="rightArm" class="bodyParts" id="leftArmPic">
-                <img src="css/img/chuckRightLeg.png" alt="lefLeg" class="bodyParts" id="leftLegPic">
-                <img src="css/img/chuckLeftleg.png" alt="RightLeg" class="bodyParts" id="RightLegPic">
+    <div id="gameChuck">
+            <div id="chuckSays"></div>
+            <div id="game">
+                <div id="mrHangMan">
+                <h1 id="hangmanPlayer"></h1>
+                <div id="myCanvas" >
+                    <img src="css/img/chuckHead.png" alt="head" class="bodyParts" id="headPic">
+                    <img src="css/img/chuckBody.png" alt="bodyPic" class="bodyParts" id="bodyPic">
+                    <img src="css/img/chuckRightArm.png" alt="leftArm" class="bodyParts" id="rightArmPic">
+                    <img src="css/img/chuckLeftAr.png" alt="rightArm" class="bodyParts" id="leftArmPic">
+                    <img src="css/img/chuckRightLeg.png" alt="lefLeg" class="bodyParts" id="leftLegPic">
+                    <img src="css/img/chuckLeftleg.png" alt="RightLeg" class="bodyParts" id="RightLegPic">
+                </div>
+                <div id="hint1">
+                    <button id="hint" onclick="count()" >Hint</button>
+                    <h1 id="winOrLose"></h1>
+                    <button onClick="window.location.reload()">Reset</button>
+                </div>
+                <div id="definiftion">
+                    <p id="definitionText"></p>
+                    <button id="defButton" onclick="fetchDefiniftion()"></button>
+                </div>
             </div>
-            <div id="hint1">
-                <button id="hint" onclick="count()" >Hint</button>
-                <h1 id="winOrLose"></h1>
-                <button onClick="window.location.reload()">Reset</button>
-            </div>
-        </div>
-        <div id="chuckSays"></div>
-    <div id='word'></div>
-    <div id="alphabet">
-        <button  class="buttons" >A</button>
-        <button  class="buttons" >B</button>
-        <button  class="buttons" >C</button>
-        <button  class="buttons" >D</button>
-        <button  class="buttons" >E</button>
-        <button  class="buttons" >F</button>
-        <button  class="buttons" >G</button>
-        <button  class="buttons" >H</button>
-        <button  class="buttons" >I</button>
-        <button  class="buttons" >J</button>
-        <button  class="buttons" >K</button>
-        <button  class="buttons" >L</button>
-        <button  class="buttons" >M</button>
-        <button  class="buttons" >N</button>
-        <button  class="buttons">O</button>
-        <button  class="buttons" >P</button>
-        <button  class="buttons" >Q</button>
-        <button  class="buttons" >R</button>
-        <button  class="buttons" >S</button>
-        <button  class="buttons" >T</button>
-        <button  class="buttons" >U</button>
-        <button class="buttons" >V</button>
-        <button  class="buttons" >W</button>
-        <button class="buttons" >X</button>
-        <button  class="buttons" >Y</button>
-        <button  class="buttons" >Z</button>
-    </div> 
-</div>
-</div>
+
+        <div id='word'></div>
+        <div id="alphabet">
+            <button  class="buttons" accesskey="a">A</button>
+            <button  class="buttons" accesskey="b" >B</button>
+            <button  class="buttons" accesskey="c" >C</button>
+            <button  class="buttons" accesskey="d" >D</button>
+            <button  class="buttons" accesskey="e" >E</button>
+            <button  class="buttons" accesskey="f" >F</button>
+            <button  class="buttons" accesskey="g" >G</button>
+            <button  class="buttons" accesskey="h" >H</button>
+            <button  class="buttons" accesskey="i" >I</button>
+            <button  class="buttons" accesskey="j" >J</button>
+            <button  class="buttons" accesskey="k" >K</button>
+            <button  class="buttons" accesskey="l" >L</button>
+            <button  class="buttons" accesskey="m" >M</button>
+            <button  class="buttons" accesskey="n" >N</button>
+            <button  class="buttons" accesskey="o" >O</button>
+            <button  class="buttons" accesskey="p" >P</button>
+            <button  class="buttons" accesskey="q" >Q</button>
+            <button  class="buttons" accesskey="r" >R</button>
+            <button  class="buttons" accesskey="s" >S</button>
+            <button  class="buttons" accesskey="t" >T</button>
+            <button  class="buttons" accesskey="u" >U</button>
+            <button  class="buttons" accesskey="v" >V</button>
+            <button  class="buttons" accesskey="w" >W</button>
+            <button  class="buttons" accesskey="x" >X</button>
+            <button  class="buttons" accesskey="y" >Y</button>
+            <button  class="buttons" accesskey="z" >Z</button>
+        </div> 
+    </div>
+
 </body>
 </html>

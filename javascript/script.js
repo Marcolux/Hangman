@@ -15,6 +15,7 @@ const bodyB=document.getElementById('bodyB')
 const startButton =document.getElementById('start')
 const game = document.getElementById('game')
 const hint= document.getElementById('hint')
+const definitionText=document.getElementById("definitionText")
 const win=[]
 const message = document.getElementById('winOrLose')
 let elemRl = document.getElementById("RightLegPic");
@@ -23,10 +24,7 @@ let elemRa = document.getElementById("rightArmPic");
 let elemBd = document.getElementById("bodyPic");
 let elemLa = document.getElementById("leftArmPic");
 let elemHp = document.getElementById("headPic");
-//canvas
-//let canvas = document.getElementById("myCanvas");
-//let ctx = canvas.getContext("2d");
-//console.log(alphabet[1].innerText)
+
 startButton.addEventListener('click',initGame)
 
 const chuckSays = document.getElementById('chuckSays')
@@ -35,26 +33,19 @@ const url2 ='https://api.chucknorris.io/jokes/random'
 // Function that start the game
 
 function initGame(){
-   //console.log(hangName)
+
    intro.style.display='none'
    hangName.innerText=playerName.value
    game.style.display= 'flex'
+   
    bodyB.style.background ="rgba(81, 108, 54, 0.845)"
    
    gameRules.style.display='none'
-   //breakLetter()
-   // matchAlphabet()
-   // draw()
+   chuckSays.style.display='flex'
    fetchWord()
    
 }
 
-// const showLetters= ()=>{
-//    win.forEach(element=>{
-//       // console.log('showLetters',element)
-//       element.style.display='flex'
-//    })
-// }
 
 //Fetch the word from APi and assign it to the game. Word is picked by the length and category 
 
@@ -69,8 +60,9 @@ function fetchWord(){
    let topic=document.getElementById('selSub').value
    let topic2=topic.split(',')
    let topic3 = topic2[0]
-   // let topic2=document.querySelector('option')
+
    const url= 'https://api.datamuse.com//words?topics='+topic
+
    console.log(topic3)
    let category = document.createElement('h4')
    category.innerText = topic3
@@ -123,7 +115,7 @@ function fetchWord(){
 
       breakLetter ()
       matchAlphabet()
-      fetchDefiniftion()
+      
 
    });  
    
@@ -180,8 +172,12 @@ function matchAlphabet(){
    let hiddenLettersS = brWord2.split('')
    //console.log(hiddenLetters)
    for (let alphabet of alphabets) {
-      alphabet.addEventListener('click' , (e) =>{
-          console.log(win)
+      alphabet.addEventListener("keydown",(e)=>{
+            console.log(e)
+         })
+         alphabet.addEventListener("click", (e)=>{
+            
+          console.log(e)
          chuck()
 
          let et = e.target.innerText
@@ -196,6 +192,8 @@ function matchAlphabet(){
                win.push(ar)
                console.log(win.length)
                console.log(arr)
+               alphabet.innerText='√'
+               alphabet.disabled = true 
                // bugRandom.push(arr)
                // showLetters()
                //console.log(win) 
@@ -204,7 +202,7 @@ function matchAlphabet(){
                   alphabet.disabled = true 
                   arr.forEach(ar =>{ar.style.display="flex";}) }}
             }})  }
-            
+          
             else{
                if (elemHp.style.left===""){ 
                   headMove() 
@@ -225,16 +223,8 @@ function matchAlphabet(){
                } else if (elemHp.style.left==="77vh" && elemBd.style.left === '76vh' && elemRa.style.left==='67vh' && elemLa.style.left === '85vh'  && elemRl.style.left === '80vh' && elemLl.style.left !== '74vh'){
                   leftLegMove()
                   elemLl.style.display = 'flex'
-               } else if (elemHp.style.left==="77vh" && elemBd.style.left === '76vh' && elemRa.style.left==='67vh' && elemLa.style.left === '85vh'  && elemRl.style.left === '80vh' && elemLl.style.left === '74vh'){
-                  for (let alphabet of alphabets){
-                     alphabet.disabled = true 
-                     arr.forEach(ar =>{ar.style.display="flex";})
-                  };
-                     
-                  message.innerText='You should know by now...Nobody can beat Chuck Norris!!'
-               }
-               
-               
+               } 
+            
                
               // console.log(elemRa.style.left)
               // console.log(elemRl.style.left)
@@ -243,7 +233,15 @@ function matchAlphabet(){
               // console.log('no')
             e.target.innerText='x'}
             
-         })}}
+         })}
+      
+      
+      
+      
+      
+      
+      
+      }
          
          
          // Hint function
@@ -252,44 +250,31 @@ let clickCount=0
 let bugRandom=[]
 
 hint.addEventListener('click',function randPick(){
-   
+   chuck()
    let letters =document.getElementsByClassName("letter")
    let arr = Array.prototype.slice.call(letters)
-   let randLett= arr[Math.floor(Math.random() * arr.length)]
-   // arr.forEach(element => { console.log(element)
-   //    bugRandom.push(element.innerText)
-   // });
-   
-   // way to turn any array-like object into a true array
-   // console.log(arr)
-   
-   // bugRandom.length
-   
-   
-   
-   
-   
-   
+   console.log('arr',arr)
+   console.log('win',win)
+   const newArr=(arr,win)=>{
+      const filtered = arr.filter(el=>{
+         return win.indexOf(el) === -1
+      })
+      return filtered
+   }
+   let filteredArray = newArr(arr,win)
+   console.log('filteredArray',filteredArray)
+   let randLett= filteredArray[Math.floor(Math.random() * filteredArray.length)]
+   console.log('randLett',randLett.innerText)
 
-
-   // if(win.includes(randLett.innerText)){
-   //    let newRandom= arr[Math.floor(Math.random() * arr.length)]  
-   //    arr.forEach(lett => {
-   //       if (lett.innerText===newRandom.innerText)
-   //       //  &&lett.innerText===randLett.innerText&& !win.includes(lett.innerText)){
-   //       // lett.style.display='flex'
-   //       showLetters()
-   //       // win.push(lett.innerText)
-   //       // // console.log(win)
-   //       // console.log(win)
-   //       // console.log(arr.length)
-   //       // if (randLett.innerText===''){randLett.innerText='-'}
-   //    {console.log('newRandom',newRandom.innerText)}
-   //    })}
-   
-   // console.log(randLett.innerText)
-   
+   const alphabets=document.getElementsByClassName('buttons')
+   for (let alphabet of alphabets){
+      if (randLett.innerText === alphabet.innerText){
+         alphabet.disabled = true 
+         alphabet.innerText='√'
+      }
+   }
    arr.forEach( lett => {
+      
       if (lett.innerText===randLett.innerText){
          lett.style.display='flex'
          // showLetters()
@@ -299,37 +284,16 @@ hint.addEventListener('click',function randPick(){
       }else if(win.length === arr.length){
          hint.disabled= true
       }
-      
-      console.log('randLett',randLett.innerText)
       // showLetters()
       
       
       
    })
-   const filter=arr.filter(ar=>ar.innerText!==randLett.innerText)
-   console.log('filter',filter)
-   bugRandom.push(filter)
-
-   if(clickCount>=3 && win.includes(randLett.innerText)){
-      let randLett= filter[Math.floor(Math.random() * filter.length)];
-   // console.log('bugRandom',filter)
-   console.log('newRandom',randLett)
-   arr.forEach( lett => {
-      if (lett.innerText===randLett.innerText){
-         lett.style.display='flex'
-         // showLetters()
-         
-         win.push(randLett.innerText)}
-
-      })}
-   // if(bugRandom.length>0){
-   //    console.log(newRandLett)
-
-   // }
-   //console.log(clickCount)
+   
    count()
    // fetchDefiniftion()
    console.log(clickCount)
+   console.log(win.length)
 })
 
 // Api call to find a definition of the word
@@ -347,8 +311,7 @@ const fetchDefiniftion = ()=>{
    let response = jsonData[0]
    let responseManings=response.meanings[0]
    console.log(responseManings.definitions[0].definition)
-   
-
+   definitionText.innerText=responseManings.definitions[0].definition
    })
 }
 
@@ -360,7 +323,7 @@ function count(){
    let arr = Array.prototype.slice.call(letters)
 
    let hintsCount =  arr.length - win.length
-   if(clickCount===5 || hintsCount<=2){ hint.style.display='none' }
+   if(clickCount===2 || hintsCount<=2){ hint.disabled=true }
    
 }
 
@@ -447,7 +410,15 @@ function rightArmMove() {
 
 
 function leftLegMove() {
+   const alphabets=document.getElementsByClassName('buttons')
+   let letters =document.querySelectorAll("h2")
+   const arr = Array.prototype.slice.call(letters)
+   for (let alphabet of alphabets){
+      alphabet.disabled = true 
+      arr.forEach(ar =>{ar.style.display="flex";})}
    
+      
+   message.innerText='You should know by now...Nobody can beat Chuck Norris!!'
                let pos = 25;
                //clearInterval(moving);
              
@@ -488,6 +459,8 @@ fetch (url2)
    
    .then((jsonData) => {
       
-          console.log(jsonData.value)
-        chuckSays.innerText=jsonData.value
+         console.log(jsonData.value)
+         chuckSays.innerText=jsonData.value
       })}
+
+
