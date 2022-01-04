@@ -34,7 +34,7 @@
             </div>
         </div>
         <div id="GameRules">
-            <h1>The Hangman Chuck</h1>
+            <h1>Chuck The Hangman</h1>
             <ul id="rules">
                 <li>Enter your Name</li>
                 <li>Select the difficulty based on the length of the word</li>
@@ -61,9 +61,14 @@
                     <h1 id="winOrLose"></h1>
                     <button onClick="window.location.reload()">Reset</button>
                 </div>
+            </div>
+            <div id="defBox">
+                <h3>Word Category</h3>
+                <h3 id="category"></h3>
+                <h4>Find 1 definition</h4>
                 <div id="definition">
                     <p id="definitionText"></p>
-                    <button id="defButton" onclick="fetchDefiniftion()"></button>
+                    <button id="defButton" onclick="fetchDefiniftion()">def</button>
                 </div>
             </div>
 

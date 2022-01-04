@@ -11,6 +11,7 @@ const playerName= document.getElementById('player')
 const intro=document.getElementById('gameIntroToo')
 const gameRules=document.getElementById('GameRules')
 const bodyB=document.getElementById('bodyB')
+const category=document.getElementById('category')
 
 const startButton =document.getElementById('start')
 const game = document.getElementById('game')
@@ -43,7 +44,7 @@ function initGame(){
    gameRules.style.display='none'
    chuckSays.style.display='flex'
    fetchWord()
-   
+   chuck()
 }
 
 
@@ -64,9 +65,9 @@ function fetchWord(){
    const url= 'https://api.datamuse.com//words?topics='+topic
 
    console.log(topic3)
-   let category = document.createElement('h4')
-   category.innerText = topic3
-   game.append(category)
+   let categ = document.createElement('h4')
+   categ.innerText = topic3
+   category.append(categ)
    //console.log(url)
    
    fetch (url)
@@ -144,6 +145,8 @@ function breakLetter (){
       if (letter.innerText===' '||letter.innerText==='-'){
          letter.style.display='flex'
          letter.innerText='-'
+         win.push(letter)
+         
       }
       
       word.append(background)
@@ -159,44 +162,37 @@ function breakLetter (){
 
 
 
-//Match the buttons to the letters of the word
+//Match the buttons to the letters of the hidden word
 
 function matchAlphabet(){
+
+   //first we select the letter of the hidden word and we store them in an array 
    let letters =document.querySelectorAll("h2")
    const arr = Array.prototype.slice.call(letters)
-   // let count=[]
-   // let newArr=arr.length
+
    const alphabets=document.getElementsByClassName('buttons')
    let word3 = document.getElementById('word2')
    let brWord2= word3.innerText
    let hiddenLettersS = brWord2.split('')
-   //console.log(hiddenLetters)
+
    for (let alphabet of alphabets) {
-      alphabet.addEventListener("keydown",(e)=>{
-            console.log(e)
-         })
+
          alphabet.addEventListener("click", (e)=>{
-            
-          console.log(e)
+
          chuck()
 
          let et = e.target.innerText
-         // console.log(et)
-         // console.log(arr)
+
          if (hiddenLettersS.includes(et)){ arr.forEach(ar =>{
-            //console.log(ar.innerText)
             
             if (et===ar.innerText ){
-               ar.style.display="flex";
-               //console.log('yes')
                win.push(ar)
-               console.log(win.length)
-               console.log(arr)
+               console.log(win)
+               ar.style.display="flex";
+
                alphabet.innerText='√'
                alphabet.disabled = true 
-               // bugRandom.push(arr)
-               // showLetters()
-               //console.log(win) 
+          
                if (win.length===arr.length){ message.innerText='Chuck let you win!' 
                for (let alphabet of alphabets){
                   alphabet.disabled = true 
@@ -224,51 +220,43 @@ function matchAlphabet(){
                   leftLegMove()
                   elemLl.style.display = 'flex'
                } 
-            
-               
-              // console.log(elemRa.style.left)
-              // console.log(elemRl.style.left)
-              //console.log(elemLl.style.left)
 
-              // console.log('no')
             e.target.innerText='X'
             alphabet.disabled = true 
          }
             
          })}
-      
-      
-      
-      
-      
-      
-      
-      }
+
+}
          
-         
-         // Hint function
          
 let clickCount=0
-let bugRandom=[]
+
+//button hint function
 
 hint.addEventListener('click',function randPick(){
+   console.log(win)
+   //clicking hint we call Chuck Norris api
    chuck()
+   //then we go throu the alphabet buttons and we store them in an array
    let letters =document.getElementsByClassName("letter")
    let arr = Array.prototype.slice.call(letters)
-   console.log('arr',arr)
-   console.log('win',win)
+  //then we filter the letters already shown that are stored in win array
    const newArr=(arr,win)=>{
       const filtered = arr.filter(el=>{
          return win.indexOf(el) === -1
       })
       return filtered
    }
+
    let filteredArray = newArr(arr,win)
    
-   console.log('filteredArray',filteredArray)
+   //next we pick a random letter from the filtered array
 
    let randLett= filteredArray[Math.floor(Math.random() * filteredArray.length)]
-   console.log('randLett',randLett.innerText)
+  
+
+   //then we disable the alphabet button with the random letter value once the letter is shown
 
    const alphabets=document.getElementsByClassName('buttons')
    for (let alphabet of alphabets){
@@ -277,27 +265,20 @@ hint.addEventListener('click',function randPick(){
          alphabet.innerText='√'
       }
    }
+
+   //reveal the random letter picked from the filtered array
+
    arr.forEach( lett => {
       
       if (lett.innerText===randLett.innerText){
          lett.style.display='flex'
-         // showLetters()
-         
+      
          win.push(randLett.innerText)
          
-      }else if(win.length === arr.length){
-         hint.disabled= true
       }
-      // showLetters()
-      
-      
-      
    })
    
    count()
-   // fetchDefiniftion()
-   console.log(clickCount)
-   console.log(win.length)
 })
 
 // Api call to find a definition of the word
@@ -314,19 +295,20 @@ const fetchDefiniftion = ()=>{
 
    let response = jsonData[0]
    let responseManings=response.meanings[0]
-   console.log(responseManings.definitions[0].definition)
+
    definitionText.innerText=responseManings.definitions[0].definition
+   if(response.meanings[0]===null){
+      definitionText.innerText="Sorry Pal, there's no definitions for this word"
+   }
    })
 }
 
-
+//function to limit the hints to 2, counts how many time gets clicked
 function count(){
    clickCount++   
    // console.log(clickCount)
    let letters =document.getElementsByClassName("letter")
-   let arr = Array.prototype.slice.call(letters)
 
-   let hintsCount =  arr.length - win.length
    if(clickCount===4 ){ hint.disabled=true }
   
 }
@@ -449,14 +431,13 @@ function rightLegMove() {
 }
 
 
-
+// Api call to Chuck Norris jokes
 function chuck(){
 fetch (url2)
    .then( (response) => { return response.json();})
    
    .then((jsonData) => {
       
-         console.log(jsonData.value)
          chuckSays.innerText=jsonData.value
       })}
 
