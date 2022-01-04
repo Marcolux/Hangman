@@ -207,20 +207,20 @@ function matchAlphabet(){
                if (elemHp.style.left===""){ 
                   headMove() 
                   elemHp.style.display = "flex"   }
-               else if (elemHp.style.left==="77vh"&& elemBd.style.left !== '76vh'){
+               else if (elemHp.style.left==="50vw"&& elemBd.style.left !== '49vw'){
                   bodyMove()
                   elemBd.style.display = 'flex'
-               }else if (elemHp.style.left==="77vh" && elemBd.style.left === '76vh' && elemRa.style.left!=='67vh'){
+               }else if (elemHp.style.left==="50vw" && elemBd.style.left === '49vw' && elemRa.style.left!=='42vw'){
                   rightArmMove()
                   elemRa.style.display = 'flex'
-               } else if (elemHp.style.left==="77vh" && elemBd.style.left === '76vh' && elemRa.style.left==='67vh' && elemLa.style.left!== '85vh'){
+               } else if (elemHp.style.left==="50vw" && elemBd.style.left === '49vw' && elemRa.style.left==='42vw' && elemLa.style.left!== '57vw'){
                   leftArmMove() 
                   elemLa.style.display = 'flex'
-               } else if (elemHp.style.left==="77vh" && elemBd.style.left === '76vh' && elemRa.style.left==='67vh' && elemLa.style.left === '85vh' && elemRl.style.left !== '80vh'){
+               } else if (elemHp.style.left==="50vw" && elemBd.style.left === '49vw' && elemRa.style.left==='42vw' && elemLa.style.left === '57vw' && elemRl.style.left !== '52vw'){
                   rightLegMove() 
                   elemRl.style.display = 'flex'
                
-               } else if (elemHp.style.left==="77vh" && elemBd.style.left === '76vh' && elemRa.style.left==='67vh' && elemLa.style.left === '85vh'  && elemRl.style.left === '80vh' && elemLl.style.left !== '74vh'){
+               } else if (elemHp.style.left==="50vw" && elemBd.style.left === '49vw' && elemRa.style.left==='42vw' && elemLa.style.left === '57vw'  && elemRl.style.left === '52vw' && elemLl.style.left !== '48vw'){
                   leftLegMove()
                   elemLl.style.display = 'flex'
                } 
@@ -231,7 +231,9 @@ function matchAlphabet(){
               //console.log(elemLl.style.left)
 
               // console.log('no')
-            e.target.innerText='x'}
+            e.target.innerText='X'
+            alphabet.disabled = true 
+         }
             
          })}
       
@@ -262,7 +264,9 @@ hint.addEventListener('click',function randPick(){
       return filtered
    }
    let filteredArray = newArr(arr,win)
+   
    console.log('filteredArray',filteredArray)
+
    let randLett= filteredArray[Math.floor(Math.random() * filteredArray.length)]
    console.log('randLett',randLett.innerText)
 
@@ -323,34 +327,27 @@ function count(){
    let arr = Array.prototype.slice.call(letters)
 
    let hintsCount =  arr.length - win.length
-   if(clickCount===2 || hintsCount<=2){ hint.disabled=true }
-   
+   if(clickCount===4 ){ hint.disabled=true }
+  
 }
 
 
-
-//bodyMove()
-//rightLegMove()
-//leftLegMove()
-//leftArmMove()         
-//rightArmMove() 
-//headMove()
 function increment(value, step){ return value+=step}
 function renderNum(num){console.log('hi')}
 
 // move the body parts
 function headMove() {
    
-   let pos = 25;
+   let pos = 2;
    //clearInterval(moving);
  
    movingHd = setInterval(()=>{
      renderNum(pos)  
      pos = increment(pos, 1)
      
-     elemHp.style.left = pos + 'vh'; 
+     elemHp.style.left = pos + 'vw'; 
      
-      if (pos === 77){clearInterval(movingHd)}
+      if (pos === 50){clearInterval(movingHd)}
       
    }, 10);
    //console.log(pos)
@@ -359,16 +356,16 @@ function headMove() {
 
 function bodyMove() {
    
-      let pos = 25;
+      let pos = 2;
       //clearInterval(moving);
     
       movingBd = setInterval(()=>{
         renderNum(pos)  
         pos = increment(pos, 1)
         
-        elemBd.style.left = pos + 'vh'; 
+        elemBd.style.left = pos + 'vw'; 
         
-         if (pos === 76){clearInterval(movingBd)}
+         if (pos === 49){clearInterval(movingBd)}
       
       }, 10);
      // console.log(pos)
@@ -376,16 +373,16 @@ function bodyMove() {
 
 function rightArmMove() {
    
-         let pos = 25;
+         let pos = 2;
          //clearInterval(moving);
        
          movingRa = setInterval(()=>{
            renderNum(pos)  
            pos = increment(pos, 1)
            
-           elemRa.style.left = pos + 'vh'; 
+           elemRa.style.left = pos + 'vw'; 
            
-            if (pos === 67){clearInterval(movingRa)}
+            if (pos === 42){clearInterval(movingRa)}
          
          }, 10);
        //  console.log(pos)
@@ -393,16 +390,16 @@ function rightArmMove() {
 
  function leftArmMove() {
    
-            let pos = 25;
+            let pos = 2;
             //clearInterval(moving);
           
             movingLa = setInterval(()=>{
               renderNum(pos)  
               pos = increment(pos, 1)
               
-              elemLa.style.left = pos + 'vh'; 
+              elemLa.style.left = pos + 'vw'; 
               
-               if (pos === 85){clearInterval(movingLa)}
+               if (pos === 57){clearInterval(movingLa)}
             
             }, 10);
           //  console.log(pos)
@@ -419,16 +416,16 @@ function leftLegMove() {
    
       
    message.innerText='You should know by now...Nobody can beat Chuck Norris!!'
-               let pos = 25;
+               let pos = 2;
                //clearInterval(moving);
              
                movingLl = setInterval(()=>{
                  renderNum(pos)  
                  pos = increment(pos, 1)
                  
-                 elemLl.style.left = pos + 'vh'; 
+                 elemLl.style.left = pos + 'vw'; 
                  
-                  if (pos === 74){clearInterval(movingLl)}
+                  if (pos === 48){clearInterval(movingLl)}
                
                }, 10);
              //  console.log(pos)
@@ -443,9 +440,9 @@ function rightLegMove() {
      renderNum(pos)  
      pos = increment(pos, 1)
      
-     elemRl.style.left = pos + 'vh'; 
+     elemRl.style.left = pos + 'vw'; 
      
-      if (pos === 80){clearInterval(movingRl)}
+      if (pos === 52){clearInterval(movingRl)}
    
    }, 10);
   // console.log(pos)

@@ -89,6 +89,9 @@ body{
    
     align-items: center; */
 }
+#definition{
+    display: flex;
+}
 
 #game{
     display: none;
@@ -115,16 +118,17 @@ body{
 #hangmanPlayer{
 
     border-radius: 2px;
-    border:2px solid black;
-    background: rgba(255, 255, 255, 0.495);
+    /* border:2px solid black;
+    background: rgba(255, 255, 255, 0.495); */
     display: flex;
-   font-size: 40px;
-   text-shadow: 2px 2px white;
+    font-size: 40px;
+    text-shadow: 2px 2px white;
     color: black;
     align-items: center;
-   
+    position:absolute;
+    left:15vw;
     align-self: center;
-
+    
 }
 
 #myCanvas{
@@ -232,27 +236,24 @@ body{
     
     position: absolute;
     left: 0vh;
-    top: 25.3vh;
-    width: 7vh;
+    top: 28.3vh;
+    width: 7vw;
     height: 7vh;
     background: cornsilk;
 }
 
 #bodyPic{
     position: absolute;
-    top:32vh;
-    
-    
-    
-    width: 10vh;
+    top: 35vh;
+    width: 8.2vw;
     height: 15vh;
     background: cornsilk;
 }
 
 #rightArmPic{
     position: absolute;
-    top:32vh;
-    width: 7.5vh;
+    top:35vh;
+    width: 7.8vw;
     height: 6vh;
 }
 
@@ -260,43 +261,42 @@ body{
 #leftArmPic{
     
     position: absolute;
-    top:32.3vh;
-    width: 8vh;
+    top:35.3vh;
+    width: 8vw;
     height: 6vh;
 }
     
 #leftLegPic{
         
         position: absolute;
-        top:47vh;
-        width: 5.7vh;
+        top:50vh;
+        width: 5.0vw;
         height: 14vh;
 }
         
 #RightLegPic{
             
             position: absolute;
-            top:47vh;
-            width: 10vh;
+            top:50vh;
+            width: 10vw;
             height: 14vh;}
             
 #chuckSays{
        
         align-items: center;
         text-align: center;
-        min-width: 90vw;
+        width: 90vw;
         overflow: scroll;
         scroll-behavior: smooth;
         scrollbar-width: 0;
         font-size: 20px;
-        padding-left: 1vh;
-        padding-right: 1vh;
+        padding: 1vh;
         display: none;
         background: rgba(255, 255, 255, 0.742);
         margin-left: 1.5vh;
         margin-right: 1.5vh;
         /* bottom: 29.2vh; */
-        height: 9vh;
+        height: 7vh;
         border-radius: 1vh;
         border: 1px solid black;
 }
