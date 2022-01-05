@@ -17,7 +17,7 @@ const startButton =document.getElementById('start')
 const game = document.getElementById('game')
 const hint= document.getElementById('hint')
 const definitionText=document.getElementById("definitionText")
-const win=[]
+let win=[]
 const message = document.getElementById('winOrLose')
 let elemRl = document.getElementById("RightLegPic");
 let elemLl = document.getElementById("leftLegPic");
@@ -26,12 +26,12 @@ let elemBd = document.getElementById("bodyPic");
 let elemLa = document.getElementById("leftArmPic");
 let elemHp = document.getElementById("headPic");
 
-startButton.addEventListener('click',initGame)
 
 // const chuckSays = document.getElementById('chuckSays')
 const url2 ='https://api.chucknorris.io/jokes/random'
 
 // Function that start the game
+startButton.addEventListener('click',initGame)
 
 function initGame(){
 
@@ -47,9 +47,7 @@ function initGame(){
   
 }
 
-
 //Fetch the word from APi and assign it to the game. Word is picked by the length and category 
-
 
 function fetchWord(){
    
@@ -64,7 +62,7 @@ function fetchWord(){
 
    const url= 'https://api.datamuse.com//words?topics='+topic
 
-   console.log(topic3)
+   // console.log(topic3)
    let categ = document.createElement('h4')
    categ.innerText = topic3
    category.append(categ)
@@ -111,7 +109,7 @@ function fetchWord(){
       word.append(word2)
       word2.id = 'word2'
 
-      console.log(word.value)
+      // console.log(word.value)
       word2.style.display='none'
 
       breakLetter ()
@@ -122,18 +120,16 @@ function fetchWord(){
    
 } 
 
-
-
-
 //brake the word in letters and hide them
 
 function breakLetter (){
+
    let word2 = document.getElementById('word2')
    // console.log(word2.innerText)
    let brWord= word2.innerText
    
    let hiddenLetters = brWord.split('')
-   console.log(hiddenLetters)
+   // console.log(hiddenLetters)
    for (i=0;i<hiddenLetters.length;i++){
       
       
@@ -160,8 +156,6 @@ function breakLetter (){
    
 }
 
-
-
 //Match the buttons to the letters of the hidden word
 
 function matchAlphabet(){
@@ -177,7 +171,7 @@ function matchAlphabet(){
 
    for (let alphabet of alphabets) {
 
-         alphabet.addEventListener("click", (e)=>{
+      alphabet.addEventListener("click", (e)=>{
 
          let et = e.target.innerText
 
@@ -185,54 +179,56 @@ function matchAlphabet(){
             
             if (et===ar.innerText ){
                win.push(ar)
-               console.log(win)
+               // console.log(win)
                ar.style.display="flex";
 
                alphabet.innerText='√'
                alphabet.disabled = true 
-          
+            
                if (win.length===arr.length){ message.innerText='Chuck let you win!' 
                for (let alphabet of alphabets){
                   alphabet.disabled = true 
                   arr.forEach(ar =>{ar.style.display="flex";}) }}
             }})  }
-          
-            else{
-               if (elemHp.style.left===""){ 
-                  headMove() 
-                  elemHp.style.display = "flex"   }
-               else if (elemHp.style.left==="50vw"&& elemBd.style.left !== '49vw'){
-                  bodyMove()
-                  elemBd.style.display = 'flex'
-               }else if (elemHp.style.left==="50vw" && elemBd.style.left === '49vw' && elemRa.style.left!=='42vw'){
-                  rightArmMove()
-                  elemRa.style.display = 'flex'
-               } else if (elemHp.style.left==="50vw" && elemBd.style.left === '49vw' && elemRa.style.left==='42vw' && elemLa.style.left!== '57vw'){
-                  leftArmMove() 
-                  elemLa.style.display = 'flex'
-               } else if (elemHp.style.left==="50vw" && elemBd.style.left === '49vw' && elemRa.style.left==='42vw' && elemLa.style.left === '57vw' && elemRl.style.left !== '52vw'){
-                  rightLegMove() 
-                  elemRl.style.display = 'flex'
-               
-               } else if (elemHp.style.left==="50vw" && elemBd.style.left === '49vw' && elemRa.style.left==='42vw' && elemLa.style.left === '57vw'  && elemRl.style.left === '52vw' && elemLl.style.left !== '48vw'){
-                  leftLegMove()
-                  elemLl.style.display = 'flex'
-               } 
+         
+         else{
+            if (elemHp.style.left===""){ 
+               headMove() 
+               elemHp.style.display = "flex"   }
+            else if (elemHp.style.left==="50vw"&& elemBd.style.left !== '49vw'){
+               bodyMove()
+               elemBd.style.display = 'flex'
+            }else if (elemHp.style.left==="50vw" && elemBd.style.left === '49vw' && elemRa.style.left!=='42vw'){
+               rightArmMove()
+               elemRa.style.display = 'flex'
+            } else if (elemHp.style.left==="50vw" && elemBd.style.left === '49vw' && elemRa.style.left==='42vw' && elemLa.style.left!== '57vw'){
+               leftArmMove() 
+               elemLa.style.display = 'flex'
+            } else if (elemHp.style.left==="50vw" && elemBd.style.left === '49vw' && elemRa.style.left==='42vw' && elemLa.style.left === '57vw' && elemRl.style.left !== '52vw'){
+               rightLegMove() 
+               elemRl.style.display = 'flex'
+            
+            } else if (elemHp.style.left==="50vw" && elemBd.style.left === '49vw' && elemRa.style.left==='42vw' && elemLa.style.left === '57vw'  && elemRl.style.left === '52vw' && elemLl.style.left !== '48vw'){
+               leftLegMove()
+               elemLl.style.display = 'flex'
+            } 
 
             e.target.innerText='X'
             alphabet.disabled = true 
          }
-            
-         })}
-
+      
+         console.log(win.length)
+         console.log(arr.length)
+      })
+   }
+   
 }
-         
-         
+
 let clickCount=0
 
 //button hint function
-
-hint.addEventListener('click',function randPick(){
+console.log(win.length)
+hint.addEventListener('click',()=>{
   
    //clicking hint we call Chuck Norris api
    // chuck()
@@ -252,7 +248,6 @@ hint.addEventListener('click',function randPick(){
    //next we pick a random letter from the filtered array
 
    let randLett= filteredArray[Math.floor(Math.random() * filteredArray.length)]
-  
 
    //then we disable the alphabet button with the random letter value once the letter is shown
 
@@ -263,16 +258,22 @@ hint.addEventListener('click',function randPick(){
          alphabet.innerText='√'
       }
    }
-
+   
    //reveal the random letter picked from the filtered array
-
+   
    arr.forEach( lett => {
       
-      if (lett.innerText===randLett.innerText){
+      if (lett.innerText===randLett.innerText||win.length===arr.length){
          lett.style.display='flex'
-      
-         win.push(randLett.innerText)
          
+         win.push(randLett)
+         
+         console.log(win.length,arr.length)
+      }else if (win.length>=arr.length){
+          message.innerText='Chuck let you win!'
+          for (let alphabet of alphabets){
+            alphabet.disabled = true 
+         }
       }
    })
    
@@ -305,12 +306,11 @@ const fetchDefiniftion = ()=>{
 function count(){
    clickCount++   
    // console.log(clickCount)
-   let letters =document.getElementsByClassName("letter")
+   // let letters =document.getElementsByClassName("letter")
 
-   if(clickCount===4 ){ hint.disabled=true }
+   if(clickCount===2 ){ hint.disabled=true }
   
 }
-
 
 function increment(value, step){ return value+=step}
 function renderNum(num){console.log('hi')}
@@ -320,114 +320,114 @@ function headMove() {
    
    let pos = 2;
    //clearInterval(moving);
- 
+
    movingHd = setInterval(()=>{
-     renderNum(pos)  
-     pos = increment(pos, 1)
-     
-     elemHp.style.left = pos + 'vw'; 
-     
+      renderNum(pos)  
+      pos = increment(pos, 1)
+      
+      elemHp.style.left = pos + 'vw'; 
+      
       if (pos === 50){clearInterval(movingHd)}
       
    }, 10);
    //console.log(pos)
 }
 
-
 function bodyMove() {
    
-      let pos = 2;
-      //clearInterval(moving);
-    
-      movingBd = setInterval(()=>{
-        renderNum(pos)  
-        pos = increment(pos, 1)
-        
-        elemBd.style.left = pos + 'vw'; 
-        
-         if (pos === 49){clearInterval(movingBd)}
+   let pos = 2;
+   //clearInterval(moving);
+   
+   movingBd = setInterval(()=>{
+      renderNum(pos)  
+      pos = increment(pos, 1)
       
-      }, 10);
-     // console.log(pos)
-      }
+      elemBd.style.left = pos + 'vw'; 
+      
+      if (pos === 49){clearInterval(movingBd)}
+   
+   }, 10);
+   // console.log(pos)
+}
 
 function rightArmMove() {
    
-         let pos = 2;
-         //clearInterval(moving);
-       
-         movingRa = setInterval(()=>{
-           renderNum(pos)  
-           pos = increment(pos, 1)
-           
-           elemRa.style.left = pos + 'vw'; 
-           
-            if (pos === 42){clearInterval(movingRa)}
-         
-         }, 10);
-       //  console.log(pos)
-         }
-
- function leftArmMove() {
+   let pos = 2;
+   //clearInterval(moving);
    
-            let pos = 2;
-            //clearInterval(moving);
-          
-            movingLa = setInterval(()=>{
-              renderNum(pos)  
-              pos = increment(pos, 1)
-              
-              elemLa.style.left = pos + 'vw'; 
-              
-               if (pos === 57){clearInterval(movingLa)}
-            
-            }, 10);
-          //  console.log(pos)
+   movingRa = setInterval(()=>{
+      renderNum(pos)  
+      pos = increment(pos, 1)
+      
+      elemRa.style.left = pos + 'vw'; 
+      
+      if (pos === 42){clearInterval(movingRa)}
+   
+   }, 10);
+   //  console.log(pos)
 }
 
+function leftArmMove() {
+   
+   let pos = 2;
+   //clearInterval(moving);
+   
+   movingLa = setInterval(()=>{
+      renderNum(pos)  
+      pos = increment(pos, 1)
+      
+      elemLa.style.left = pos + 'vw'; 
+      
+      if (pos === 57){clearInterval(movingLa)}
+   
+   }, 10);
+   //  console.log(pos)
+}
 
 function leftLegMove() {
+
    const alphabets=document.getElementsByClassName('buttons')
    let letters =document.querySelectorAll("h2")
    const arr = Array.prototype.slice.call(letters)
+
+
    for (let alphabet of alphabets){
       alphabet.disabled = true 
       arr.forEach(ar =>{ar.style.display="flex";})}
    
       
    message.innerText='You should know by now...Nobody can beat Chuck Norris!!'
-               let pos = 2;
-               //clearInterval(moving);
-             
-               movingLl = setInterval(()=>{
-                 renderNum(pos)  
-                 pos = increment(pos, 1)
-                 
-                 elemLl.style.left = pos + 'vw'; 
-                 
-                  if (pos === 48){clearInterval(movingLl)}
-               
-               }, 10);
-             //  console.log(pos)
+   let pos = 2;
+   //clearInterval(moving);
+   
+   movingLl = setInterval(()=>{
+      renderNum(pos)  
+      pos = increment(pos, 1)
+      
+      elemLl.style.left = pos + 'vw'; 
+      
+      if (pos === 48){clearInterval(movingLl)}
+   
+   }, 10);
+   //  console.log(pos)
 }
 
 function rightLegMove() {
    
    let pos = 25;
    //clearInterval(moving);
- 
-   movingRl = setInterval(()=>{
-     renderNum(pos)  
-     pos = increment(pos, 1)
-     
-     elemRl.style.left = pos + 'vw'; 
-     
-      if (pos === 52){clearInterval(movingRl)}
-   
-   }, 10);
-  // console.log(pos)
-}
 
+   movingRl = setInterval(()=>{
+      renderNum(pos)  
+      pos = increment(pos, 1)
+      
+      elemRl.style.left = pos + 'vw'; 
+      
+      if (pos === 52){clearInterval(movingRl)}
+
+   }, 10);
+   // console.log(pos)
+}
 
 // Api call to Chuck Norris jokes
 // function chuck(){
