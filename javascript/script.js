@@ -28,7 +28,7 @@ let elemHp = document.getElementById("headPic");
 
 startButton.addEventListener('click',initGame)
 
-const chuckSays = document.getElementById('chuckSays')
+// const chuckSays = document.getElementById('chuckSays')
 const url2 ='https://api.chucknorris.io/jokes/random'
 
 // Function that start the game
@@ -42,9 +42,9 @@ function initGame(){
    bodyB.style.background ="rgba(81, 108, 54, 0.845)"
    
    gameRules.style.display='none'
-   chuckSays.style.display='flex'
+   // chuckSays.style.display='flex'
    fetchWord()
-   chuck()
+  
 }
 
 
@@ -179,8 +179,6 @@ function matchAlphabet(){
 
          alphabet.addEventListener("click", (e)=>{
 
-         chuck()
-
          let et = e.target.innerText
 
          if (hiddenLettersS.includes(et)){ arr.forEach(ar =>{
@@ -235,9 +233,9 @@ let clickCount=0
 //button hint function
 
 hint.addEventListener('click',function randPick(){
-   console.log(win)
+  
    //clicking hint we call Chuck Norris api
-   chuck()
+   // chuck()
    //then we go throu the alphabet buttons and we store them in an array
    let letters =document.getElementsByClassName("letter")
    let arr = Array.prototype.slice.call(letters)
@@ -432,13 +430,13 @@ function rightLegMove() {
 
 
 // Api call to Chuck Norris jokes
-function chuck(){
-fetch (url2)
-   .then( (response) => { return response.json();})
+// function chuck(){
+// fetch (url2)
+//    .then( (response) => { return response.json();})
    
-   .then((jsonData) => {
+//    .then((jsonData) => {
       
-         chuckSays.innerText=jsonData.value
-      })}
+//          chuckSays.innerText=jsonData.value
+//       })}
 
 
