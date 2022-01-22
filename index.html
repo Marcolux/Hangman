@@ -19,8 +19,7 @@
                     <option id="seven" value="seven">Max 7 letters</option>
                     <option id="ten" value="ten">Max 10 Letters</option>  
                 </select>
-                <select name="subjecT" id="selSub">  
-                    <option value=""></option>
+                <select name="subjecT" id="selSub" >  
                     <option name="Sport" value="Sport,kind of sport,football player, basketball player, baseball player, soccer player">Sports</option>
                     <option label="Music" value="Music, song, music instrument, music genre, singer">Music</option>
                     <option id="History" value="History, historic event, ancient population">History</option>
@@ -44,33 +43,35 @@
         </div> 
     </div>
     <div id="gameChuck">
-            <div id="chuckSays"></div>
-            <div id="game">
-                <div id="mrHangMan">
-                <h1 id="hangmanPlayer"></h1>
-                <div id="myCanvas" >
-                    <img src="css/img/chuckHead.png" alt="head" class="bodyParts" id="headPic">
-                    <img src="css/img/chuckBody.png" alt="bodyPic" class="bodyParts" id="bodyPic">
-                    <img src="css/img/chuckRightArm.png" alt="leftArm" class="bodyParts" id="rightArmPic">
-                    <img src="css/img/chuckLeftAr.png" alt="rightArm" class="bodyParts" id="leftArmPic">
-                    <img src="css/img/chuckRightLeg.png" alt="lefLeg" class="bodyParts" id="leftLegPic">
-                    <img src="css/img/chuckLeftleg.png" alt="RightLeg" class="bodyParts" id="RightLegPic">
-                </div>
-                <div id="hint1">
-                    <button id="hint" onclick="count()" >Hint</button>
-                    <h1 id="winOrLose"></h1>
-                    <button onClick="window.location.reload()">Reset</button>
-                </div>
-            </div>
+        <div id="chuckSays"></div>
+        <div id="game">
             <div id="defBox">
-                <h3>Word Category</h3>
-                <h3 id="category"></h3>
-                <h3>Find 1 definition</h3>
+                <h1 id="hangmanPlayer"></h1>
+                <button id="hint" onclick="count()" >Hint</button>
+                <h3>Your Word's Category is : <span id="category"> </span></h3>
+                <!-- <h3 id="category"></h3> -->
                 <div id="definition">
+                    <div id="definitionButton">
+                        <h3>Find 1 definition</h3>
+                        <button id="defButton" onclick="fetchDefinition()"></button>
+                    </div>
                     <p id="definitionText"></p>
-                    <button id="defButton" onclick="fetchDefiniftion()">def</button>
                 </div>
             </div>
+                <div id="mrHangMan">
+                    <div id="myCanvas" >
+                        <img src="css/img/chuckHead.png" alt="head" class="bodyParts" id="headPic">
+                        <img src="css/img/chuckBody.png" alt="bodyPic" class="bodyParts" id="bodyPic">
+                        <img src="css/img/chuckRightArm.png" alt="leftArm" class="bodyParts" id="rightArmPic">
+                        <img src="css/img/chuckLeftAr.png" alt="rightArm" class="bodyParts" id="leftArmPic">
+                        <img src="css/img/chuckRightLeg.png" alt="lefLeg" class="bodyParts" id="leftLegPic">
+                        <img src="css/img/chuckLeftleg.png" alt="RightLeg" class="bodyParts" id="RightLegPic">
+                    </div>
+                    <div id="hint1">
+                        <h1 id="winOrLose"></h1>
+                        <button id="Restart" onClick="window.location.reload()">Restart</button>
+                    </div>
+                </div>
 
         <div id='word'></div>
         <div id="alphabet">

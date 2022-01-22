@@ -3,16 +3,17 @@ html{
     font-family: 'IM Fell English SC', serif;
     padding: 0vh;
     margin: 0vh;
-    background: rgba(81, 108, 54, 0.845);
-    
-    
-}
-
-body{
-    background: url('css/img/jungle.jpeg');
+    background: url('./img/background.jpeg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    opacity: 1;
+  
+}
+
+body{
+   opacity: 1;
+    
     display: flex;
     flex-direction: column;
     height: 98vh;
@@ -20,8 +21,10 @@ body{
     justify-content: center;
     justify-self: center;
 }
+
+/*____________ Intro ____________*/
 #gameIntroToo{
-    
+    opacity: 1;
     justify-content: center;
     display: flex;
     flex-direction: column;
@@ -39,16 +42,25 @@ body{
     justify-content: space-evenly;
    border: 2px solid black;
    border-radius: 10px;
-   background: rgba(192, 222, 125, 0.646);
+   background: #0368a6c1;
 }
 
 #player, #difficulty,#selSub, #start{
-    color:black;
+    color:#000d54;
     border:2px solid black;
     border-radius: 3px;
-    background: rgba(100, 133, 29, 0.646);
+    background: #ffffffeb;
     font-family: 'IM Fell English SC', serif;
     font-size: 18px;
+}
+#player::placeholder{
+    color: #01189b;
+}
+
+#start:hover{
+    background: #3e5bff;
+    color: white;
+    border:1px solid rgb(255, 255, 255);
 }
 
 #GameRules{
@@ -57,15 +69,16 @@ body{
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    background: rgba(109, 128, 71, 0.721);
+    background: #0368a6c1;
     align-items: center;
     width: 100vh;
     justify-self: center;
     font-size: 25px;
+    opacity: 1;
 }
 
 #GameRules h1{
-    text-shadow:2px 2px rgb(6, 79, 6);
+    text-shadow:2px 2px rgba(255, 255, 255, 0.708);
 }
 
 #selSub{
@@ -84,23 +97,63 @@ body{
 }
 
 #gameChuck{
-   
-    /* display: flex;
-   
-    align-items: center; */
+   /* background: url('./img/background.jpeg');
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position:center; */
+   opacity: 1;
 }
 #definition{
     display: flex;
     flex-direction: column;
     height: 5vh;
     padding: 0;
+    margin: 0;
     
 }
 #defBox{
-    width: 20vw;
-    position: absolute;
+    
+    width:15vw;
+    position: fixed;
     right: 5vw;
-    top:40vh;
+    top:23vh;
+    box-shadow: -.1vh -.1vh 1vh 1vh #0000006f ;
+    height: 30vh;
+    padding: 2vh;
+    border-radius: 1vh;
+    margin: 0;
+    font-size: 2vh;
+}
+#category{
+    text-decoration: underline;
+}
+#definitionButton{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#definitionButton h3{
+    margin-right: 1vw;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 3vh;
+}
+#defButton{
+    height: 2vh;
+    width: 2vh;
+    border-radius: 2vh;
+    border: 1px solid black;
+}
+#defButton:hover{
+    background: #0368a6e7;
+    color: white;
+    border: none;
+    box-shadow: -.05vh -.05vh .5vh .5vh #000000ad ;
+
+}
+#definitionText{
+    margin: 0;
+    font-size: 2vh;
 }
 
 #game{
@@ -110,7 +163,8 @@ body{
     background-size: cover;
     height: 83vh;
     display: none;
-    justify-content:center
+    justify-content:center;
+    opacity: 1;
 }
 
 #mrHangMan{
@@ -145,42 +199,68 @@ body{
 }
 
 #alphabet{
-    border-radius: 2vh;
-    background: rgba(255, 255, 255, 0.749);
+    border-radius: 1vh;
+    background: rgb(255, 255, 255);
     margin-right: 1vh;
-
-    min-width: 10vh;
-    height: 12vh;
-    position: absolute;
-    bottom: 4vh;
+    min-width: 15;
+    max-width: 40vh;
+    height: 40vh;
+    position: fixed;
+    bottom: 25vh;
+    left: 2vw;
     display: flex;
     flex-wrap: wrap;
     justify-content:center;
     align-content: center;
     padding-left: 0vh;
     padding-right: 1vh;
+    /* border:1px solid #5f782b; */
+    box-shadow: -.1vh -.1vh 1vh 1vh #0000006f ;
+
     
     
 }
 .buttons{
-    box-shadow: 2px 2px black;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.795);
     font-family: 'IM Fell English SC', serif;
     font-size: x-large;
-    margin-left: 2vh;
+    margin: .5vh;
     height: 5vh;
     width: 5vh;
+    padding: .1vh;
+    text-align: center;
 
+}
+.buttons:hover{
+    background: #ADD94E;
+    box-shadow: -.01vh -.01vh .1vh .1vh #000000ad ;
+    border: 1px solid black;
+    color: white;
 }
 
 #hint{
     margin-top: 2vh;
     display: flex;
-    width:10vh;
-    height: 3vh;
+    width:8vh;
+    height: 8vh;
+    border-radius: 4vh;
+    border: 1px solid black;
     margin-bottom: 2vh;
-    font-size: 2vh;
+    font-size: 3vh;
     align-items: center;
     justify-content: center;
+    align-self: center;
+    position: fixed;
+    right: 5vw;
+    top:10vh;
+    background: #fefefe;
+    box-shadow: -.02vh -.02vh .2vh .2vh #000000ad ;
+}
+#hint:hover{
+    background: #0368a6e7;
+    color: white;
+    border: none;
+    box-shadow: -.05vh -.05vh .5vh .5vh #000000ad ;
 }
 #hint1{
     height: 10vh;
@@ -196,17 +276,16 @@ body{
 
 #winOrLose{
     font-size: 30px;
-    text-shadow:2px 1px rgb(10, 91, 10);
+    /* text-shadow:2px s1px #0000009c; */
     text-justify: center;
 }
 
 #word{
     display: flex;
     justify-content: space-evenly;
-    
     position: fixed;
     justify-self: center;
-    bottom: 20vh;
+    bottom: 10vh;
     width: 95vh;
     padding: 1vh;
 }
@@ -217,10 +296,9 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background:rgba(255, 255, 255, 0.598) ;
-  
-   height: 7vh;
-   width: 7vh;
+    background:rgba(255, 255, 255, 0.94) ;
+    height: 7vh;
+    width: 7vh;
 
 }
 .letter{
@@ -274,19 +352,32 @@ body{
     
 #leftLegPic{
         
-        position: absolute;
-        top:50vh;
-        width: 5.0vw;
-        height: 14vh;
+    position: absolute;
+    top:50vh;
+    width: 5.0vw;
+    height: 14vh;
 }
         
 #RightLegPic{
             
-            position: absolute;
-            top:50vh;
-            width: 10vw;
-            height: 14vh;}
-            
+    position: absolute;
+    top:50vh;
+    width: 10vw;
+    height: 14vh;}
+
+    #Restart{
+        font-size: 2.5vh;
+        margin-left: 4vw;
+        box-shadow: -.05vh -.05vh .5vh .5vh #000000ad ;
+        font-family: 'IM Fell English SC', serif;
+        border: 1px solid black ;
+    }
+    #Restart:hover{
+        box-shadow: none;
+        background: #3e5bff;
+        color: white;
+    
+    }   
 /* #chuckSays{
         display: flex;
         align-items: center;

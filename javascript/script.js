@@ -39,7 +39,7 @@ function initGame(){
    hangName.innerText=playerName.value
    game.style.display= 'flex'
    
-   bodyB.style.background ="rgba(81, 108, 54, 0.845)"
+   // bodyB.style.background ="url('./img/background.jpeg');"
    
    gameRules.style.display='none'
    // chuckSays.style.display='flex'
@@ -62,10 +62,7 @@ function fetchWord(){
 
    const url= 'https://api.datamuse.com//words?topics='+topic
 
-   // console.log(topic3)
-   let categ = document.createElement('h4')
-   categ.innerText = topic3
-   category.append(categ)
+   category.innerText = topic3
    //console.log(url)
    
    fetch (url)
@@ -268,7 +265,7 @@ hint.addEventListener('click',()=>{
          
          win.push(randLett)
          
-         console.log(win.length,arr.length)
+         // console.log(win.length,arr.length)
       }else if (win.length>=arr.length){
           message.innerText='Chuck let you win!'
           for (let alphabet of alphabets){
@@ -281,7 +278,7 @@ hint.addEventListener('click',()=>{
 })
 
 // Api call to find a definition of the word
-const fetchDefiniftion = ()=>{
+const fetchDefinition = ()=>{
    
    // getting the hidden word
    let word4=word2.innerText.toLowerCase()
@@ -296,7 +293,7 @@ const fetchDefiniftion = ()=>{
    let responseManings=response.meanings[0]
 
    definitionText.innerText=responseManings.definitions[0].definition
-   if(response.meanings[0]===null){
+   if(response.meanings[0]===undefined){
       definitionText.innerText="Sorry Pal, there's no definitions for this word"
    }
    })
