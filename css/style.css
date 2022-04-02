@@ -113,10 +113,11 @@ body{
 }
 #defBox{
     
-    width:15vw;
-    position: fixed;
-    right: 5vw;
-    top:23vh;
+    width:300px;
+    position: relative;
+    top: 35vh;
+    left: 65vw;
+    /* top:23vh; */
     box-shadow: -.1vh -.1vh 1vh 1vh #0000006f ;
     height: 30vh;
     padding: 2vh;
@@ -136,7 +137,8 @@ body{
     margin-right: 1vw;
     margin-bottom: 0;
     margin-top: 0;
-    font-size: 3vh;
+    font-size: 20px;
+    text-decoration: underline;
 }
 #defButton{
     height: 2vh;
@@ -152,18 +154,32 @@ body{
 
 }
 #definitionText{
+    display: flex;
     margin: 0;
     font-size: 2vh;
+    min-height: 15vh;
+    margin-top: 1vh;
+    background-color: #fefefe;
+    border: .5px solid black;
+    border-radius: 4px;
+    padding: 1vh;
+    overflow: scroll;
+    -ms-overflow-style:none;/* IE and Edge */
+    scrollbar-width:none;/* Firefox */
 }
+#definitionText::-webkit-scrollbar{
+ display:none;
+    }
 
 #game{
     display: none;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 83vh;
-    display: none;
+    min-width: 1430px; ;
+    min-height: 798px;
     justify-content:center;
+    align-self: center;
     opacity: 1;
 }
 
@@ -251,9 +267,9 @@ body{
     align-items: center;
     justify-content: center;
     align-self: center;
-    position: fixed;
+    position: absolute;
     right: 5vw;
-    top:10vh;
+    top:-13vh;
     background: #fefefe;
     box-shadow: -.02vh -.02vh .2vh .2vh #000000ad ;
 }
@@ -273,6 +289,8 @@ body{
     display: flex ;
     align-items: center;
     justify-content: space-between;
+    margin-top: 10vh;
+    margin-left: -10vw;
 }
 
 #winOrLose{
@@ -397,3 +415,13 @@ body{
         /* height: 7vh;
         border-radius: 1vh;
         border: 1px solid black;} */
+
+        @media screen and (min-width:1500px ) {
+            #hint1{
+                margin-top: 0vh;
+            }
+            #defBox{
+                left: 60vw;
+            }
+        }
+       
